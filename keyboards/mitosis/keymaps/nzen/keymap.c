@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_A,      KC_S,      KC_D,      KC_F,      KC_G,     KC_H,      KC_J,        KC_K,        KC_L,   KC_SCOLON,
     KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,     KC_N,      KC_M,        KC_COMM,     KC_DOT, KC_QUOTE,
                KC_BSPACE, KC_DELETE, KC_LCTRL,  TG( 2 ),  TG( 3 ),   KC_RCTRL,    KC_ENTER,    KC_BSPACE,
-               KC_LALT,   KC_0,      KC_LSHIFT, KC_SPACE, KC_SPACE,  KC_RSHIFT,   KC_CAPSLOCK, KC_RALT
+               KC_LALT,   KC_0,      KC_LSHIFT, KC_SPACE, KC_SPACE,  KC_RSHIFT,   KC_CAPS,     KC_RALT
   ),
   /*
   ['Q', 'D', 'R', 'W', 'B',/ ** / 'J', 'F', 'U', 'P', '; :' ],
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_PUNCT] = LAYOUT(
     KC_HASH,     KC_AT,       KC_AMPERSAND, KC_DOT,      KC_SCOLON, KC_UNDERSCORE, KC_COMMA,    KC_PIPE, KC_CIRCUMFLEX, KC_PERCENT,
     KC_ASTERISK, KC_PLUS,     KC_LCBR,      KC_LPRN,     KC_COLON,  KC_DQUO,       KC_RPRN,     KC_RCBR, KC_MINUS,      KC_EQUAL,
-    KC_BSLASH,   KC_QUESTION, KC_LT,        KC_LBRACKET, KC_DOLLAR, KC_TILDE,      KC_RBRACKET, KC_GT,   KC_EXCLAIM,    KC_SLASH,
+    KC_BSLASH,   KC_QUESTION, KC_LT,        KC_LBRC,     KC_DOLLAR, KC_TILDE,      KC_RBRC,     KC_GT,   KC_EXCLAIM,    KC_SLASH,
                  _______,     _______,      _______,     TG( 4 ),   TG( 3 ),       _______,     _______, _______,
                  _______,     KC_3,         _______,     _______,   _______,       _______,     _______, _______
   ),
@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MOUSE] = LAYOUT(
     KC_F6,  KC_F7,   KC_F8,    KC_F9,    KC_F10,    KC_MENU,    KC_MS_BTN1, KC_MS_UP,      KC_MS_BTN2,     KC_MS_WH_UP,
     KC_F1,  KC_F2,   KC_F3,    KC_F4,    KC_F5,     KC_MENU,    KC_MS_LEFT, KC_MS_DOWN,    KC_MS_RIGHT,    KC_MS_WH_DOWN,
-    KC_F11, KC_F12,  KC_GRAVE, KC__MUTE, KC_ESCAPE, KC_PSCREEN, KC_SLCK,    KC_MS_WH_LEFT, KC_MS_WH_RIGHT, KC_MS_BTN3,
+    KC_F11, KC_F12,  KC_GRAVE, KC_MUTE,  KC_ESCAPE, KC_PSCREEN, KC_SLCK,    KC_MS_WH_LEFT, KC_MS_WH_RIGHT, KC_MS_BTN3,
             _______, _______,  _______,  TG( 4 ),   TG( 5 ),    _______,    _______,       _______,
             _______, KC_4,     _______,  _______,   _______,    _______,    _______,       _______
   ),
@@ -156,8 +156,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [ '', 'C', '', '',/ ** / '', '', '', '',  ]
    */
   [_NUMPAD] = LAYOUT(
-    KC_KP_DOT,      KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_MINUS, KC_KP_EQUAL, KC_AUDIO_VOL_UP,     KC_AUDIO_VOL_DOWN,   KC__VOLUP,           KC__VOLDOWN,
-    KC_KP_0,        KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_PLUS,  KC_NUMLOCK,  KC_WWW_BACK,         KC_AUDIO_MUTE,       KC_RGUI,             KC_PAUSE,
+    KC_KP_DOT,      KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_MINUS, KC_KP_EQUAL, KC_AUDIO_VOL_UP,     KC_AUDIO_VOL_DOWN,   KC_VOLU,             KC_VOLD,
+    KC_KP_0,        KC_KP_4, KC_KP_5, KC_KP_6, KC_KP_PLUS,  KC_NUM,      KC_WWW_BACK,         KC_AUDIO_MUTE,       KC_RGUI,             KC_PAUSE,
     KC_KP_ASTERISK, KC_KP_1, KC_KP_2, KC_KP_3, KC_KP_SLASH, KC_KP_ENTER, KC_MEDIA_PLAY_PAUSE, KC_MEDIA_PREV_TRACK, KC_MEDIA_NEXT_TRACK, KC_INSERT,
                     _______, _______, _______, TG( 8 ),     KC_8,        _______,             _______,             _______,
                     _______, KC_8,    _______, _______,     _______,     _______,             _______,             _______
