@@ -359,7 +359,7 @@ enum quantum_keycodes {
     RGB_MODE_RGBTEST,  // 5CD6
 
     // Velocikey
-    VLK_TOG, // 5CD7
+    QK_VELOCIKEY_TOGGLE, // 5CD7
 
     // Space Cadet
     KC_LSPO,   // 5CD8
@@ -465,13 +465,13 @@ enum quantum_keycodes {
     JS_BUTTON31, // 5D28
 
     // Leader Key
-    KC_LEAD, // 5D29
+    QK_LEADER, // 5D29
 
     // Bluetooth: output selection (continued)
     OUT_BT, // 5D2A
 
     // Lock Key
-    KC_LOCK, // 5D2B
+    QK_LOCK, // 5D2B
 
     // Unused slots
     UNUSED_000, // 5D2C
@@ -680,10 +680,6 @@ enum quantum_keycodes {
 #define CK_DOWN CLICKY_DOWN
 #define CK_ON CLICKY_ENABLE
 #define CK_OFF CLICKY_DISABLE
-// Fauxclicky (deprecated) redirects to Audio Clicky
-#define FC_ON CLICKY_ENABLE
-#define FC_OFF CLICKY_DISABLE
-#define FC_TOGG CLICKY_TOGGLE
 
 // RGB aliases
 #define RGB_MOD RGB_MODE_FORWARD
@@ -746,6 +742,9 @@ enum quantum_keycodes {
 #define CRT_ON AUTOCORRECT_ON
 #define CRT_OFF AUTOCORRECT_OFF
 #define CRT_TOG AUTOCORRECT_TOGGLE
+
+// Velocikey
+#define VK_TOGG QK_VELOCIKEY_TOGGLE
 
 // GOTO layer - 256 layer max
 #define TO(layer) (QK_TO | ((layer)&0xFF))
@@ -838,13 +837,14 @@ enum quantum_keycodes {
 #define UC_RMOD UNICODE_MODE_REVERSE
 
 #define UC_M_MA UNICODE_MODE_MAC
-#define UNICODE_MODE_OSX UNICODE_MODE_MAC // Deprecated alias
-#define UC_M_OS UNICODE_MODE_MAC          // Deprecated alias
 #define UC_M_LN UNICODE_MODE_LNX
 #define UC_M_WI UNICODE_MODE_WIN
 #define UC_M_BS UNICODE_MODE_BSD
 #define UC_M_WC UNICODE_MODE_WINC
 #define UC_M_EM UNICODE_MODE_EMACS
+
+// Leader key
+#define QK_LEAD QK_LEADER
 
 // Swap Hands
 #define SH_T(kc) (QK_SWAP_HANDS | (kc))
