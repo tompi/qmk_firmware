@@ -73,8 +73,13 @@ __attribute__((weak)) bool process_autocorrect_user(uint16_t *keycode, keyrecord
         case KC_LSFT:
         case KC_RSFT:
         case KC_CAPS:
-        case QK_TO ... QK_ONE_SHOT_LAYER_MAX:
-        case QK_LAYER_TAP_TOGGLE ... QK_LAYER_MOD_MAX:
+        case QK_TO ... QK_TO_MAX:
+        case QK_MOMENTARY ... QK_MOMENTARY_MAX:
+        case QK_DEF_LAYER ... QK_DEF_LAYER_MAX:
+        case QK_TOGGLE_LAYER ... QK_TOGGLE_LAYER_MAX:
+        case QK_ONE_SHOT_LAYER ... QK_ONE_SHOT_LAYER_MAX:
+        case QK_LAYER_TAP_TOGGLE ... QK_LAYER_TAP_TOGGLE_MAX:
+        case QK_LAYER_MOD ... QK_LAYER_MOD_MAX:
         case QK_ONE_SHOT_MOD ... QK_ONE_SHOT_MOD_MAX:
             return false;
 
@@ -160,12 +165,12 @@ bool process_autocorrect(uint16_t keycode, keyrecord_t *record) {
     mods |= get_oneshot_mods();
 #endif
 
-    if ((keycode >= AUTOCORRECT_ON && keycode <= AUTOCORRECT_TOGGLE) && record->event.pressed) {
-        if (keycode == AUTOCORRECT_ON) {
+    if ((keycode >= QK_AUTOCORRECT_ON && keycode <= QK_AUTOCORRECT_TOGGLE) && record->event.pressed) {
+        if (keycode == QK_AUTOCORRECT_ON) {
             autocorrect_enable();
-        } else if (keycode == AUTOCORRECT_OFF) {
+        } else if (keycode == QK_AUTOCORRECT_OFF) {
             autocorrect_disable();
-        } else if (keycode == AUTOCORRECT_TOGGLE) {
+        } else if (keycode == QK_AUTOCORRECT_TOGGLE) {
             autocorrect_toggle();
         } else {
             return true;
