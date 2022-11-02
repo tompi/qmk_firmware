@@ -10,7 +10,7 @@
         "mousekey": true,
         "nkro": true
     },
-    "processor": "STM32F401",
+    "development_board": "blackpill_f401",
     "url": "https://github.com/tompi/vonreg",
     "usb": {
         "pid": "0x0000",

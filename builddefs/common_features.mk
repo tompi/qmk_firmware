@@ -64,6 +64,7 @@ ifeq ($(strip $(AUDIO_ENABLE)), yes)
         OPT_DEFS += -DAUDIO_DRIVER_PWM
     endif
     OPT_DEFS += -DAUDIO_ENABLE
+    COMMON_VPATH += $(QUANTUM_PATH)/audio
     MUSIC_ENABLE = yes
     SRC += $(QUANTUM_DIR)/process_keycode/process_audio.c
     SRC += $(QUANTUM_DIR)/process_keycode/process_clicky.c
@@ -538,11 +539,7 @@ endif
 VALID_BACKLIGHT_TYPES := pwm timer software custom
 
 BACKLIGHT_ENABLE ?= no
-ifeq ($(strip $(CONVERT_TO_PROTON_C)), yes)
-    BACKLIGHT_DRIVER ?= software
-else
-    BACKLIGHT_DRIVER ?= pwm
-endif
+BACKLIGHT_DRIVER ?= pwm
 ifeq ($(strip $(BACKLIGHT_ENABLE)), yes)
     ifeq ($(filter $(BACKLIGHT_DRIVER),$(VALID_BACKLIGHT_TYPES)),)
         $(call CATASTROPHIC_ERROR,Invalid BACKLIGHT_DRIVER,BACKLIGHT_DRIVER="$(BACKLIGHT_DRIVER)" is not a valid backlight type)
