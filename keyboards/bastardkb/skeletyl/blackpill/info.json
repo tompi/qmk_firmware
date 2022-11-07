@@ -1,6 +1,13 @@
 {
-    "keyboard_name": "Skeletyl Blackpill",
+    "manufacturer": "QMK",
+    "development_board": "blackpill_f401",
+    "url": "",
+    "maintainer": "qmk",
     "usb": {
-      "device_version": "1.0.0",
+        "vid": "0xFEED",
+        "pid": "0x6465",
+        "device_version": "0.0.1"
     },
+    "features": {
+    }
 }

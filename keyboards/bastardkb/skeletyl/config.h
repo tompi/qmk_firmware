@@ -24,6 +24,9 @@
 #define MATRIX_ROWS 8 // Rows are doubled-up.
 #define MATRIX_COLS 5
 
+#define BOOTMAGIC_LITE_ROW_RIGHT 4
+#define BOOTMAGIC_LITE_COLUMN_RIGHT 0
+
 #define DIODE_DIRECTION ROW2COL
 
 /* Set 0 if debouncing isn't needed. */
