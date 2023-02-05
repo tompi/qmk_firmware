@@ -17,7 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "config_common.h"
 
 #define MATRIX_ROWS 6
 #define MATRIX_COLS 4
@@ -26,7 +25,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COL_PINS { A3, A2, A1, A0 }
 
 #define DIODE_DIRECTION COL2ROW
-#define DEBOUNCE 5
 
 #define LED_NUM_LOCK_PIN D0
 

@@ -16,7 +16,6 @@
  */
 
 #pragma once
-#include "config_common.h"
 
 #define MATRIX_ROWS 10
 #define MATRIX_COLS 6
@@ -38,6 +37,5 @@
 #define RGBLIGHT_EFFECT_RGB_TEST
 #define RGBLIGHT_EFFECT_ALTERNATING
 #define RGBLIGHT_EFFECT_TWINKLE
-#define DEBOUNCE 5
 #define SOFT_SERIAL_PIN D0
 #define MASTER_RIGHT

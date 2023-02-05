@@ -16,7 +16,6 @@
 
 #pragma once
 
-#include "config_common.h"
 
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 7
@@ -30,9 +29,6 @@
 #define MATRIX_COL_PINS { F4, F5, F6, F7, C7, C6, B6 }
 
 #define DIODE_DIRECTION COL2ROW
-
-/* Set 0 if debouncing is not needed */
-#define DEBOUNCE 5
 
 /* Underglow + top RGB configuration */
 #define RGB_DI_PIN D4

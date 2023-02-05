@@ -17,7 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "config_common.h"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -99,7 +98,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #    define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 
-#    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_BAND_SAT
+#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_BAND_SAT
 /* If defined, the RGB lighting will be switched off when the host goes to sleep */
 #    define RGBLIGHT_SLEEP 
 /*== all animations enable ==*/

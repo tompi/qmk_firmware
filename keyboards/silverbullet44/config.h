@@ -17,7 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "config_common.h"
 
 /* key matrix size */
 #define MATRIX_ROWS 8
@@ -45,10 +44,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SOFT_SERIAL_PIN D2 // or D1, D2, D3, E6
 #define MASTER_RIGHT
 
-// #define BACKLIGHT_PIN B7
-// #define BACKLIGHT_BREATHING
-// #define BACKLIGHT_LEVELS 3
-
 #define RGB_DI_PIN D3
 #ifdef RGB_DI_PIN
   //#define RGBLIGHT_SPLIT
@@ -67,7 +62,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     #define RGB_MATRIX_KEYPRESSES  // reacts to keypresses
 
-    #define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_TYPING_HEATMAP
+    #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_TYPING_HEATMAP
   #else
     #define RGBLIGHT_LED_MAP { 0,1,2,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,3,4,5,6, \
                               26,27,28,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,29,30,31,32 }
@@ -106,9 +101,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define AUDIO_CLICKY_FREQ_RANDOMNESS 1.0f
 #endif
 
-/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 10
-
 //#define RETRO_TAPPING
 
 #ifdef MOUSEKEY_ENABLE
@@ -116,11 +108,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define MOUSEKEY_MAX_SPEED 5
   #define MOUSEKEY_TIME_TO_MAX 60
 #endif
-
-/* define if matrix has ghost (lacks anti-ghosting diodes) */
-//#define MATRIX_HAS_GHOST
-
-/* number of backlight levels */
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 //#define LOCKING_SUPPORT_ENABLE
@@ -131,27 +118,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
  */
 // #define GRAVE_ESC_CTRL_OVERRIDE
-
-/*
- * Force NKRO
- *
- * Force NKRO (nKey Rollover) to be enabled by default, regardless of the saved
- * state in the bootmagic EEPROM settings. (Note that NKRO must be enabled in the
- * makefile for this to work.)
- *
- * If forced on, NKRO can be disabled via magic key (default = LShift+RShift+N)
- * until the next keyboard reset.
- *
- * NKRO may prevent your keystrokes from being detected in the BIOS, but it is
- * fully operational during normal computer usage.
- *
- * For a less heavy-handed approach, enable NKRO via magic key (LShift+RShift+N)
- * or via bootmagic (hold SPACE+N while plugging in the keyboard). Once set by
- * bootmagic, NKRO mode will always be enabled until it is toggled again during a
- * power-up.
- *
- */
-//#define FORCE_NKRO
 
 /*
  * Feature disable options

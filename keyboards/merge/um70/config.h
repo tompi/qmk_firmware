@@ -14,7 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "config_common.h"
 
 #define MATRIX_ROWS 10
 #define MATRIX_COLS 8
@@ -40,8 +39,6 @@
 #endif
 #define RGBLIGHT_SLEEP
 #define RGBLIGHT_LIMIT_VAL 150
-
-#define DEBOUNCE 5
 
 #define B6_AUDIO
 

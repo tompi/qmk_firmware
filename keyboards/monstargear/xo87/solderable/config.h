@@ -16,7 +16,6 @@
 
 #pragma once
 
-#include "config_common.h"
 
 #define brightnessMax 8
 
@@ -33,7 +32,6 @@
 #define KEYLED_COLS 16
 #define KEYLED_ROW_PINS { E5,B4,B5,F0,C6,D5 }
 #define KEYLED_COL_PINS { C4,C2,C0,E0,D4,E4,B6,B2,F4,A0,F2,A4,F1,A7,D3,A3 }
-#define LED_DRIVER_LED_COUNT 93
 
 #define DIODE_DIRECTION ROW2COL
 #define RGB_DI_PIN D7
@@ -51,7 +49,6 @@
 #define RGBLIGHT_EFFECT_ALTERNATING
 #define RGBLIGHT_EFFECT_TWINKLE
 
-#define DEBOUNCE 5
 #define LOCKING_SUPPORT_ENABLE
 #define LOCKING_RESYNC_ENABLE
 

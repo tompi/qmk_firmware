@@ -27,7 +27,6 @@
 #define DIODE_DIRECTION COL2ROW
 
 #define TAPPING_TERM 100
-#define DEBOUNCE 5
 
 /* encoder support */
 #ifdef ENCODER_ENABLE
@@ -40,9 +39,9 @@
 
 /* joystick support */
 #ifdef JOYSTICK_ENABLE
-#   define JOYSTICK_AXES_COUNT 2
+#   define JOYSTICK_AXIS_COUNT 2
 #   define JOYSTICK_BUTTON_COUNT 1
-#   define JOYSTICK_AXES_RESOLUTION 8
+#   define JOYSTICK_AXIS_RESOLUTION 8
 #endif
 
 #define TAP_CODE_DELAY 10

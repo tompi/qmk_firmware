@@ -15,7 +15,6 @@
  */
 #pragma once
 
-#include "config_common.h"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -57,7 +56,7 @@
 #    define RGB_MATRIX_SAT_STEP 8
 #    define RGB_MATRIX_VAL_STEP 8
 #    define RGB_MATRIX_SPD_STEP 10
-#    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_PINWHEEL  // default mode
+#    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_PINWHEEL  // default mode
 
 // RGB Matrix Animation modes. Explicitly enabled
 // For full list of effects, see:
@@ -109,6 +108,3 @@
 // #    define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 
 #endif
-
-/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 5

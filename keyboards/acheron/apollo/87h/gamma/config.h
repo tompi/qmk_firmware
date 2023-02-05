@@ -27,12 +27,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROW_PINS { C14, C13, B9 , B4 , A3 , A2 }
 #define DIODE_DIRECTION COL2ROW
 
-/* define if matrix has ghost */
-//#define MATRIX_HAS_GHOST
-
-/* Set 0 if debouncing isn't needed */
-#define DEBOUNCE    5
-
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
@@ -48,11 +42,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_MATRIX_LED_COUNT DRIVER_1_LED_TOTAL
 #define ISSI_DRIVER_TOTAL RGB_MATRIX_LED_COUNT
 
-#define RGB_MATRIX_STARTUP_VAL 80
+#define RGB_MATRIX_DEFAULT_VAL 80
 #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define RGB_MATRIX_KEYPRESSES
 #define RGB_DISABLE_WHEN_USB_SUSPENDED  // turn off effects when suspended
-#define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_HUE_WAVE
+#define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_HUE_WAVE
 
 #define ENABLE_RGB_MATRIX_ALPHAS_MODS
 #define ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN

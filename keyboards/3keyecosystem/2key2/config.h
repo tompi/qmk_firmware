@@ -16,7 +16,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #pragma once
 
-#include "config_common.h"
 
 /* key matrix size */
 #define MATRIX_ROWS 1
@@ -36,10 +35,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN B2
 #define RGB_MATRIX_LED_COUNT 2
 #define RGB_MATRIX_KEYPRESSES
-#define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_REACTIVE
-#define RGB_MATRIX_STARTUP_HUE 90
-#define RGB_MATRIX_STARTUP_SPD 20
-#define RGB_MATRIX_STARTUP_VAL 128
+#define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE
+#define RGB_MATRIX_DEFAULT_HUE 90
+#define RGB_MATRIX_DEFAULT_SPD 20
+#define RGB_MATRIX_DEFAULT_VAL 128
 #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #define RGB_DISABLE_WHEN_USB_SUSPENDED
 
@@ -87,6 +86,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ENABLE_RGB_MATRIX_MULTISPLASH
 #define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
-
-/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCE 5

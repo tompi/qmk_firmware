@@ -3,6 +3,7 @@
     "usb": {
         "pid": "0xDB62"
     },
+    "community_layouts": ["60_ansi", "60_tsangan_hhkb"],
     "layouts": {
         "LAYOUT_60_ansi": {
             "layout": [
@@ -142,6 +143,6 @@
                 {"label":"Win", "x":12.5, "y":4},
                 {"label":"Ctrl", "x":13.5, "y":4, "w":1.5}
             ]
-        },
+        }
     }
 }
