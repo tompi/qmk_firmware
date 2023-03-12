@@ -16,14 +16,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #pragma once
 
-
-/* key matrix size */
-#define MATRIX_ROWS 8
-#define MATRIX_COLS 8
-
-#define BOOTMAGIC_LITE_ROW 3
-#define BOOTMAGIC_LITE_COLUMN 6
-
 /* Only required if you add in a trackpoint hardware to the pcb */
 #ifdef PS2_DRIVER_USART
 #define PS2_CLOCK_PIN   D5
@@ -78,17 +70,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     } while (0)
     #define PS2_INT_VECT   INT2_vect
 
-#endif
-
-/* key matrix pins */
-#define MATRIX_ROW_PINS { C6, B6, B5, B4, D7, D6, B0, D3 }
-#define MATRIX_COL_PINS { C7, F7, F6, F5, F4, F1, F0, D1 }
-
-/* COL2ROW or ROW2COL */
-#define DIODE_DIRECTION COL2ROW
-
-#ifdef BACKLIGHT_PIN
-#define BACKLIGHT_LEVELS 3
 #endif
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */

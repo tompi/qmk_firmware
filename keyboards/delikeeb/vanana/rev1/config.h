@@ -17,29 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-/* key matrix size */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 12
-
-/*
- * Keyboard Matrix Assignments
- *
- * Change this to how you wired your keyboard
- * COLS: AVR pins used for columns, left to right
- * ROWS: AVR pins used for rows, top to bottom
- * DIODE_DIRECTION: COL2ROW = COL = Anode (+), ROW = Cathode (-, marked on diode)
- *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
- *
- */
-#define MATRIX_ROW_PINS { D2, D7, B4, B5, B6 }
-#define MATRIX_COL_PINS { B2, B3, B1, F7, F5, F6, D3, D1, D0, D4, C6, E6 }
-
-/* COL2ROW, ROW2COL */
-#define DIODE_DIRECTION COL2ROW
-
-/* Rotary Encoder and Buzzer */
-#define ENCODERS_PAD_A { C7, F1 }
-#define ENCODERS_PAD_B { D5, F0 }
 #define B7_AUDIO
 
 #define RGB_DI_PIN F0
@@ -59,12 +36,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGBLIGHT_EFFECT_STATIC_GRADIENT
 //#    define RGBLIGHT_EFFECT_RGB_TEST
 //#    define RGBLIGHT_EFFECT_ALTERNATING
-/*== customize breathing effect ==*/
-/*==== (DEFAULT) use fixed table instead of exp() and sin() ====*/
-#    define RGBLIGHT_BREATHE_TABLE_SIZE 256      // 256(default) or 128 or 64
-/*==== use exp() and sin() ====*/
-#    define RGBLIGHT_EFFECT_BREATHE_CENTER 1.85  // 1 to 2.7
-#    define RGBLIGHT_EFFECT_BREATHE_MAX    255   // 0 to 255
 #endif
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
@@ -76,7 +47,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * This is useful for the Windows task manager shortcut (ctrl+shift+esc).
  */
 #define GRAVE_ESC_CTRL_OVERRIDE
-
-/* Bootmagic Lite key configuration */
-#define BOOTMAGIC_LITE_ROW 0
-#define BOOTMAGIC_LITE_COLUMN 0

@@ -17,22 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-
-/* Key matrix size */
-#define MATRIX_ROWS 6
-#define MATRIX_COLS 18
-
-#define MATRIX_ROW_PINS { B1, B2, B10, B11, B12, B13 }
-#define MATRIX_COL_PINS { A14, A15, B3, B4, B5, B6, B7, B8, B9, A0, A1, A2, A3, A4, A5, A6, A7, B0 }
-
-/* Encoder */
-#define ENCODERS 1
-#define ENCODERS_PAD_A { B15 }
-#define ENCODERS_PAD_B { B14 }
-
-/* COL2ROW, ROW2COL*/
-#define DIODE_DIRECTION COL2ROW
-
 /* RGB Light */
 #define WS2812_PWM_DRIVER PWMD1
 #define WS2812_PWM_CHANNEL 2
@@ -56,12 +40,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_EFFECT_RGB_TEST
 #define RGBLIGHT_EFFECT_ALTERNATING
 #define RGBLIGHT_EFFECT_TWINKLE
-
-/* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
- * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
- */
-// #define GRAVE_ESC_CTRL_OVERRIDE
-
-/* Bootmagic Lite key configuration */
-#define BOOTMAGIC_LITE_ROW 0
-#define BOOTMAGIC_LITE_COLUMN 0

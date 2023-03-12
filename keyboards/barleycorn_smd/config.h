@@ -52,9 +52,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_EFFECT_TWINKLE
 #define RGBLIGHT_LED_MAP { 0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 5 }
 
-#define LED_CAPS_LOCK_PIN B2
-#define LED_NUM_LOCK_PIN B3
-
 /* COL2ROW, ROW2COL*/
 #define DIODE_DIRECTION COL2ROW
 
@@ -65,11 +62,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
-
-/* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
- * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
- */
-// #define GRAVE_ESC_CTRL_OVERRIDE
 
 /*
  * Feature disable options

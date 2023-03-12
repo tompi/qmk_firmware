@@ -24,17 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* LSE clock */
 #define STM32_LSECLK 32768
 
-/* key matrix size */
-#define MATRIX_ROWS 4
-#define MATRIX_COLS 3
-
-#define MATRIX_ROW_PINS { A8, C15, A0, A1 }
-#define MATRIX_COL_PINS { A9, C13, C14 }
-// To enable debugger set A13 A14 -> A5 A7
-
-/* COL2ROW, ROW2COL*/
-#define DIODE_DIRECTION COL2ROW
-
 /* Ensure we jump to bootloader if the QK_BOOT keycode was pressed */
 #define EARLY_INIT_PERFORM_BOOTLOADER_JUMP TRUE
 
@@ -45,11 +34,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define I2C1_TIMINGR_SDADEL 1U
 #define I2C1_TIMINGR_SCLH 3U
 #define I2C1_TIMINGR_SCLL 9U
-
-/* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
- * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
- */
-// #define GRAVE_ESC_CTRL_OVERRIDE
 
 #define WS2812_SPI SPID2 // default: SPID1
 #define WS2812_SPI_MOSI_PAL_MODE 0 // Pin "alternate function", see the respective datasheet for the appropriate values for your MCU. default: 5
@@ -74,10 +58,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_EFFECT_ALTERNATING
 #define RGBLIGHT_EFFECT_TWINKLE
 #endif
-
-/* Bootmagic Lite key configuration */
-#define BOOTMAGIC_LITE_ROW 0
-#define BOOTMAGIC_LITE_COLUMN 0
 
 /* Backlight options */
 

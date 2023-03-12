@@ -16,33 +16,6 @@
 
 #pragma once
 
-
-/* key matrix size */
-#define MATRIX_ROWS 6
-#define MATRIX_COLS 17
-
-/*
- * Keyboard Matrix Assignments
- *
- * Change this to how you wired your keyboard
- * COLS: AVR pins used for columns, left to right
- * ROWS: AVR pins used for rows, top to bottom
- * DIODE_DIRECTION: COL2ROW = COL = Anode (+), ROW = Cathode (-, marked on diode)
- *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
- *
- */
-
-/* key matrix pins */
-#define MATRIX_ROW_PINS { B2, B3, D3, D4, D5, D6 }
-#define MATRIX_COL_PINS { E6, F0, F1, F4, F5, F6, F7, C7, C6, B6, B5, B4, D7, B1, B0, D0, D1 }
-
-/* COL2ROW or ROW2COL */
-#define DIODE_DIRECTION COL2ROW
-
-#ifdef BACKLIGHT_PIN
-#define BACKLIGHT_LEVELS 8
-#endif
-
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
 
@@ -83,7 +56,3 @@
 #define RGB_MATRIX_LED_COUNT RGBLED_NUM
 #define RGB_MATRIX_KEYPRESSES
 #endif
-
-#define BOOTMAGIC_LITE_ROW 0
-#define BOOTMAGIC_LITE_COLUMN 0
-

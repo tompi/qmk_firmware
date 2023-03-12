@@ -17,30 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-
-/* key matrix size */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 15
-
-#define MATRIX_ROW_PINS { A0, A1, A2, B11, B6 }
-#define MATRIX_COL_PINS { A3, A4, A5, A6, A7, B0, B1, B2, B10, B12, B13, B14, B15, A8, A9 }
-
-/* COL2ROW, ROW2COL*/
-#define DIODE_DIRECTION COL2ROW
-
-/* Indicator LEDs */
-#define LED_CAPS_LOCK_PIN A14
-#define LED_PIN_ON_STATE 0
-
-/* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
- * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
- */
-// #define GRAVE_ESC_CTRL_OVERRIDE
-
-/* Bootmagic Lite key configuration */
-#define BOOTMAGIC_LITE_ROW 0
-#define BOOTMAGIC_LITE_COLUMN 0
-
 /* RGB options */
 
 #define RGB_DI_PIN B4

@@ -3,13 +3,18 @@
     "manufacturer": "ryanbaekr",
     "url": "",
     "maintainer": "ryanbaekr",
-    "processor": "atmega32u4",
-    "bootloader": "caterina",
     "usb": {
         "vid": "0x7262",
         "pid": "0x0018",
         "device_version": "0.0.3"
     },
+    "matrix_pins": {
+        "cols": ["B2", "B6", "B5", "B4"],
+        "rows": ["B1", "F7", "F6", "F5", "F4"]
+    },
+    "diode_direction": "COL2ROW",
+    "processor": "atmega32u4",
+    "bootloader": "caterina",
     "layouts": {
         "LAYOUT_numpad_5x4": {
             "layout": [

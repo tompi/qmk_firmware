@@ -17,27 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-
-/* key matrix size */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 13
-
-/*
- * Keyboard Matrix Assignments
- */
-#define MATRIX_ROW_PINS { B0, B1, B2, B3, B7 }
-#define MATRIX_COL_PINS { F7, F6, F5, F4, F1, F0, D5, D4, D6, D7, B4, B5, B6 }
-
-/* COL2ROW, ROW2COL*/
-#define DIODE_DIRECTION COL2ROW
-
-/*
- * Backlight
- */
-#define BACKLIGHT_PIN C6
-#define BACKLIGHT_BREATHING
-#define BACKLIGHT_LEVELS 6
-
 /*
  * RGB Underglow
  */
@@ -58,18 +37,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_EFFECT_STATIC_GRADIENT
 //  #define RGBLIGHT_EFFECT_RGB_TEST
 //  #define RGBLIGHT_EFFECT_ALTERNATING
-/*== customize breathing effect ==*/
-  /*==== (DEFAULT) use fixed table instead of exp() and sin() ====*/
-//  #define RGBLIGHT_BREATHE_TABLE_SIZE 256      // 256(default) or 128 or 64
-  /*==== use exp() and sin() ====*/
-//  #define RGBLIGHT_EFFECT_BREATHE_CENTER 1.85  // 1 to 2.7
-//  #define RGBLIGHT_EFFECT_BREATHE_MAX    255   // 0 to 255
 #endif
-
-/* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
- * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
- */
-// #define GRAVE_ESC_CTRL_OVERRIDE
 
 /*
  * Feature disable options
@@ -86,7 +54,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
-
-/* Bootmagic Lite key configuration */
-// #define BOOTMAGIC_LITE_ROW 0
-// #define BOOTMAGIC_LITE_COLUMN 0

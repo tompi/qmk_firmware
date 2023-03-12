@@ -17,33 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-
-/* key matrix size */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 14
-
-/*
- * Keyboard Matrix Assignments
- *
- * Change this to how you wired your keyboard
- * COLS: AVR pins used for columns, left to right
- * ROWS: AVR pins used for rows, top to bottom
- * DIODE_DIRECTION: COL2ROW = COL = Anode (+), ROW = Cathode (-, marked on diode)
- *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
- *
-*/
-#define MATRIX_ROW_PINS { C7, C6, B6, B5, B4 }
-#define MATRIX_COL_PINS { D7, F7, F6, F5, F4, F1, F0, E6, B0, B7, D0, D1, D2, D3 }
-
-/* COL2ROW, ROW2COL*/
-#define DIODE_DIRECTION COL2ROW
-
-/* D4 is not a PWM pin, but look at timer assisted software PWM if you want something other than toggle
- * https://docs.qmk.fm/#/feature_backlight?id=timer-assisted-pwm-implementation
- */
-#define BACKLIGHT_PIN D4
-#define BACKLIGHT_ON_STATE 0
-
 #define RGB_DI_PIN B2
 #ifdef RGB_DI_PIN
   #define RGBLED_NUM 20

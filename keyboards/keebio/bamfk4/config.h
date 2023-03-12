@@ -3,21 +3,6 @@
 
 #pragma once
 
-
-
-/* key matrix size */
-#define MATRIX_ROWS 1
-#define MATRIX_COLS 4
-
-/*
- * Keyboard Matrix Assignments
- */
-#define MATRIX_ROW_PINS { F0 }
-#define MATRIX_COL_PINS { E6, D5, B6, B7 }
-
-/* COL2ROW or ROW2COL */
-#define DIODE_DIRECTION COL2ROW
-
 #define RGB_DI_PIN D3
 #ifdef RGB_DI_PIN
 #    define RGBLED_NUM 32
@@ -91,11 +76,6 @@
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-/* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
- * This is useful for the Windows task manager shortcut (ctrl+shift+esc).
- */
-//#define GRAVE_ESC_CTRL_OVERRIDE
-
 /*
  * Feature disable options
  *  These options are also useful to firmware size reduction.
@@ -111,7 +91,3 @@
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
-
-/* Bootmagic Lite key configuration */
-//#define BOOTMAGIC_LITE_ROW 0
-//#define BOOTMAGIC_LITE_COLUMN 0

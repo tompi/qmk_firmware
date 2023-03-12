@@ -17,26 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-
-/* key matrix size */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 16
-
-// ROWS: Top to bottom, COLS: Left to right
-
-#define MATRIX_ROW_PINS {B4,D7,D6,D4,B3}
-#define MATRIX_COL_PINS {D2,D1,D0,D3,D5,C7,C6,B6,B5,F0,F1,F4,F5,F6,F7,B0}
-
-/* COL2ROW or ROW2COL */
-#define DIODE_DIRECTION COL2ROW
-
-#define LED_CAPS_LOCK_PIN B2
-#define LED_PIN_ON_STATE 0
-
-#define BACKLIGHT_PIN B7
-#define BACKLIGHT_BREATHING
-#define BACKLIGHT_LEVELS 5
-
 #define RGB_DI_PIN E6
 #ifdef RGB_DI_PIN
    #define RGBLED_NUM 9
@@ -64,6 +44,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LOCKING_RESYNC_ENABLE
 
 /* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
- * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
+ * This is useful for the Windows task manager shortcut (ctrl+shift+esc).
  */
 #define GRAVE_ESC_CTRL_OVERRIDE

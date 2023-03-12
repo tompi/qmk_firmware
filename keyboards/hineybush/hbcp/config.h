@@ -38,10 +38,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //EITHERWAY is supported through a custom matrix
 //#define DIODE_DIRECTION EITHERWAY
 
-#define BACKLIGHT_PIN B7
-#define BACKLIGHT_BREATHING
-#define BACKLIGHT_LEVELS 3
-
 #define RGB_DI_PIN B0
 #ifdef RGB_DI_PIN
    #define RGBLED_NUM 27
@@ -67,8 +63,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
-
-/* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
- * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
- */
-// #define GRAVE_ESC_CTRL_OVERRIDE
