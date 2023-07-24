@@ -1,10 +1,16 @@
 # Build Options
 #   change yes to no to disable
 #
+# MCU name
+MCU = STM32F401
+BOARD = BLACKPILL_STM32_F401
+BOOTLOADER = stm32-dfu
+
 BOOTMAGIC_ENABLE = yes      # Enable Bootmagic Lite
+CAPS_WORD_ENABLE = yes
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
-CONSOLE_ENABLE = no         # Console for debug
+CONSOLE_ENABLE = yes         # Console for debug
 COMMAND_ENABLE = no         # Commands for debug and configuration
 NKRO_ENABLE = no            # Enable N-Key Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
@@ -22,7 +28,7 @@ SPLIT_KEYBOARD = yes
 MOUSE_SHARED_EP = no # Unify multiple HID interfaces into a single Endpoint
 KEYBOARD_SHARED_EP = yes
 
-EEPROM_DRIVER = spi
+#EEPROM_DRIVER = spi
 WS2812_DRIVER = pwm
 SERIAL_DRIVER = usart
 
