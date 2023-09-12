@@ -18,8 +18,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *               └───┤   │   │   ├───┘
       *                   └───┘   └───┘
       *
-      * 
-      * 
+      *
+      *
         KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,                                           KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,     KC_TRANSPARENT,
         KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,                                           KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,     KC_TRANSPARENT,
         KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,                                           KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,
@@ -31,14 +31,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                         KC_N,    KC_M,    KC_COMM, KC_DOT,        KC_SLSH,
                                       KC_LCTL, LT(1,KC_SPACE), OSM(MOD_LSFT),           KC_LGUI,  KC_RCTL,  KC_RALT
     ),
-    
+
     [1] = LAYOUT_split_3x5_3(
         KC_EXLM,           KC_AT,             KC_LCBR,           KC_RCBR,           KC_PIPE,                                             KC_TRANSPARENT,    KC_7,    KC_8,    KC_9,     KC_ASTR,
         KC_HASH,           KC_DLR,            KC_LPRN,           KC_RPRN,           KC_DOT,                                              KC_TRANSPARENT,    KC_4,    KC_5,    KC_6,     KC_PLUS,
         KC_SLASH,          KC_CIRC,           KC_LBRC,           KC_RBRC,           KC_TILD,                                             KC_TRANSPARENT,    KC_1,    KC_2,    KC_3,    KC_MINUS,
                                                                       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,           KC_0,  KC_0,  KC_DOT
     ),
-  
+
     [2] = LAYOUT_split_3x5_3(
         KC_TRANSPARENT,    KC_PGDN,           KC_UP,             KC_PGUP,           KC_TRANSPARENT,                                           KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,     KC_TRANSPARENT,
         KC_TRANSPARENT,    KC_LEFT,           KC_DOWN,           KC_RIGHT,          KC_TRANSPARENT,                                           KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,    KC_TRANSPARENT,     KC_TRANSPARENT,
@@ -61,6 +61,7 @@ const uint16_t PROGMEM combo3[] = { KC_1, KC_2, COMBO_END};
 const uint16_t PROGMEM combo4[] = { KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo5[] = { KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM combo6[] = { KC_LPRN, KC_RPRN, COMBO_END};
+const uint16_t PROGMEM combo7[] = { KC_U, KC_I, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(combo0, KC_BSPC),
@@ -70,6 +71,7 @@ combo_t key_combos[] = {
     COMBO(combo4, KC_ESCAPE),
     COMBO(combo5, KC_TAB),
     COMBO(combo6, KC_DOT),
+    COMBO(combo7, KC_QUOTE),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
