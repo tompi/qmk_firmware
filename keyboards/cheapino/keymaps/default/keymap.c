@@ -56,7 +56,7 @@ combo_t key_combos[] = {
     COMBO(combo4, KC_ESCAPE),
     COMBO(combo5, KC_TAB),
     COMBO(combo6, KC_DOT),
-    COMBO(combo7, KC_KC_QUOTE),
+    COMBO(combo7, KC_QUOTE),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
