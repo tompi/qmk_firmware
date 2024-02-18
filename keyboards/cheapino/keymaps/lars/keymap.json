@@ -118,7 +118,7 @@
       "KC_TAB",
       "KC_DEL",
       "TO(0)",
-      "KC_TRNS"
+      "RGB_TOG"
     ]
   ],
   "author": "thomas.haukland@gmail.com"
