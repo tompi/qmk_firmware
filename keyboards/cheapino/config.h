@@ -34,7 +34,7 @@
 #define RGBLIGHT_LED_COUNT 1                     // The number of LEDs connected
 
 
-#define MAX_DEFERRED_EXECUTORS 32
+#define MAX_DEFERRED_EXECUTORS 42
 
 // #define DEBUG_MATRIX_SCAN_RATE
 
