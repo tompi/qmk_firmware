@@ -37,3 +37,7 @@
 #define MAX_DEFERRED_EXECUTORS 32
 
 // #define DEBUG_MATRIX_SCAN_RATE
+
+ #define RGBLIGHT_DEFAULT_HUE 128 // Sets the default hue value, if none has been set
+ #define RGBLIGHT_DEFAULT_SAT 128 // Sets the default saturation value, if none has been set
+ #define RGBLIGHT_DEFAULT_VAL 32 // Sets the default brightness value, if none has been set
