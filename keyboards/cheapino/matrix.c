@@ -25,8 +25,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config.h"
 #include "quantum.h"
 #include "debounce.h"
-#include "encoder.h"
-#include "ghosting.h"
+#include "matrix-encoder.h"
+#include "matrix-ghosting.h"
 #include "print.h"
 
 // How long the scanning code waits for changed io to settle.
@@ -120,16 +120,11 @@ void matrix_init_custom(void) {
 }
 
 void store_old_matrix(matrix_row_t current_matrix[]) {
-    for (uint8_t i = 0; i < MATRIX_ROWS; i++) {
-        previous_matrix[i] = current_matrix[i];
-    }
+    memcpy(previous_matrix, current_matrix, MATRIX_ROWS * sizeof(matrix_row_t));
 }
 
 bool has_matrix_changed(matrix_row_t current_matrix[]) {
-    for (uint8_t i = 0; i < MATRIX_ROWS; i++) {
-        if (previous_matrix[i] != current_matrix[i]) return true;
-    }
-    return false;
+    return memcmp(previous_matrix, current_matrix, MATRIX_ROWS * sizeof(matrix_row_t)) != 0;
 }
 
 bool matrix_scan_custom(matrix_row_t current_matrix[]) {

@@ -4,16 +4,51 @@
     "maintainer": "tompi",
     "bootloader": "rp2040",
     "diode_direction": "ROW2COL",
+    "ws2812": {
+        "driver": "vendor",
+        "pin": "GP16"
+    },
+    "build": {
+        "lto": true
+    },
     "features": {
         "bootmagic": true,
+        "caps_word": true,
         "command": false,
         "console": false,
+        "deferred_exec": true,
         "extrakey": true,
         "mousekey": true,
-        "nkro": false
+        "nkro": false,
+        "rgblight": true
     },
-    "community_layouts": ["split_3x5_3"],
+    "tapping": {
+        "term": 230
+    },
+    "caps_word": {
+        "both_shifts_turns_on": true
+    },
+    "encoder": {
+        "_comment0": "These are unused but have to be defined. The encoder is",
+        "_comment1": "actually handled by matrix intersections; see encoder.c",
+        "rotary": [
+            {
+                "pin_a": "GP9",
+                "pin_b": "GP10"
+            }
+        ]
+    },
+    "rgblight": {
+        "led_count": 1,
+        "default": {
+            "hue": 128,
+            "sat": 128,
+            "val": 64
+        }
+    },
     "matrix_pins": {
+        "custom": true,
+        "custom_lite": true,
         "cols": [
             "GP6",
             "GP6",
@@ -29,7 +64,16 @@
             "GP26",
             "GP26"
         ],
-        "rows": ["GP3", "GP1", "GP2", "GP0",    "GP27", "GP28", "GP29", "GP8"]
+        "rows": [
+            "GP3",
+            "GP1",
+            "GP2",
+            "GP0",
+            "GP27",
+            "GP28",
+            "GP29",
+            "GP8"
+        ]
     },
     "processor": "RP2040",
     "url": "",
@@ -46,6 +90,8 @@
                 { "matrix": [4, 8], "x": 2, "y": 0 },
                 { "matrix": [4, 7], "x": 3, "y": 0.125 },
                 { "matrix": [4, 6], "x": 4, "y": 0.25 },
+
+                { "matrix": [3, 0], "x": 6, "y": 0.25 },
 
                 { "matrix": [0, 0], "x": 7, "y": 0.25 },
                 { "matrix": [0, 1], "x": 8, "y": 0.125 },

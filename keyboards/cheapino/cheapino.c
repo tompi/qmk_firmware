@@ -1,5 +1,4 @@
-#include "wait.h"
-#include "quantum.h"
+#include QMK_KEYBOARD_H
 
 // This is to keep state between callbacks, when it is 0 the
 // initial RGB flash is finished
@@ -27,49 +26,17 @@ uint32_t flash_led(uint32_t next_trigger_time, void *cb_arg) {
     }
 }
 
-void keyboard_post_init_user(void) {
-    //debug_enable=true;
-    //debug_matrix=true;
-    //debug_keyboard=true;
-    //debug_mouse=true;
+void keyboard_post_init_kb(void) {
+    // debug_enable=true;
+    // debug_matrix=true;
+    // debug_keyboard=true;
+    // debug_mouse=true;
 
     // Store user selected rgb hsv:
-    _hue = rgblight_get_hue();
+    _hue        = rgblight_get_hue();
     _saturation = rgblight_get_sat();
-    _value = rgblight_get_val();
+    _value      = rgblight_get_val();
 
     // Flash a little on start
     defer_exec(50, flash_led, NULL);
 }
-
-// Make the builtin RGB led show different colors per layer:
-// This seemed like a good idea but turned out pretty annoying,
-// to me at least... Uncomment the lines below to enable
-/*
-uint8_t get_hue(uint8_t layer) {
-    switch (layer) {
-        case 6:
-            return 169;
-        case 5:
-            return 43;
-        case 4:
-            return 85;
-        case 3:
-            return 120;
-        case 2:
-            return 180;
-        case 1:
-            return 220;
-        default:
-            return 0;
-    }
-}
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    uint8_t sat = rgblight_get_sat();
-    uint8_t val = rgblight_get_val();
-    uint8_t hue = get_hue(get_highest_layer(state));
-    rgblight_sethsv(hue, sat, val);
-    return state;
-}
-*/
