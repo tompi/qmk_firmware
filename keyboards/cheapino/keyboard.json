@@ -8,15 +8,13 @@
         "driver": "vendor",
         "pin": "GP16"
     },
-    "build": {
-        "lto": true
-    },
     "features": {
         "bootmagic": true,
         "caps_word": true,
         "command": false,
         "console": false,
         "deferred_exec": true,
+        "encoder": true,
         "extrakey": true,
         "mousekey": true,
         "nkro": false,
