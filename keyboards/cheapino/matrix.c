@@ -25,8 +25,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config.h"
 #include "quantum.h"
 #include "debounce.h"
-#include "matrix-encoder.h"
-#include "matrix-ghosting.h"
 #include "print.h"
 
 // How long the scanning code waits for changed io to settle.
@@ -128,6 +126,9 @@ bool has_matrix_changed(matrix_row_t current_matrix[]) {
 }
 
 bool matrix_scan_custom(matrix_row_t current_matrix[]) {
+    extern void fix_encoder_action(matrix_row_t current_matrix[]);
+    extern void fix_ghosting(matrix_row_t matrix[]);
+
     store_old_matrix(current_matrix);
     // Set row, read cols
     for (uint8_t current_row = 0; current_row < MATRIX_ROWS; current_row++) {
