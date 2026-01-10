@@ -1,12 +1,12 @@
 # cheapino
 
-![cheapino](imgur.com image replace me!)
+![cheapino](https://raw.githubusercontent.com/tompi/cheapino/refs/heads/master/doc/gallery/27.png)
 
 *A short description of the keyboard/project*
 
 * Keyboard Maintainer: [Thomas Haukland](https://github.com/tompi)
-* Hardware Supported: *The PCBs, controllers supported*
-* Hardware Availability: *Links to where you can find this hardware*
+* Hardware Supported: pcb v2 with RP2040-Zero MCU
+* Hardware Availability: https://github.com/tompi/cheapino
 
 Make example for this keyboard (after setting up your build environment):
 
