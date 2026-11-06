@@ -158,15 +158,31 @@ void rgb_matrix_update_pwm_buffers(void) {
 
 __attribute__((weak)) int rgb_matrix_led_index(int index) {
 #if defined(RGB_MATRIX_SPLIT)
-    if (!is_keyboard_left() && index >= k_rgb_matrix_split[0]) {
-        return index - k_rgb_matrix_split[0];
+    const bool index_in_left_side = index < k_rgb_matrix_split[0];
+
+    if (is_keyboard_left()) {
+        if (index_in_left_side) {
+            return index;
+        }
+        return -1;
     }
+
+    if (index_in_left_side) {
+        return -1;
+    }
+
+    return index - k_rgb_matrix_split[0];
 #endif
     return index;
 }
 
 void rgb_matrix_set_color(int index, uint8_t red, uint8_t green, uint8_t blue) {
-    rgb_matrix_driver.set_color(rgb_matrix_led_index(index), red, green, blue);
+    const int led_index = rgb_matrix_led_index(index);
+    if (led_index < 0) {
+        return;
+    }
+
+    rgb_matrix_driver.set_color(led_index, red, green, blue);
 }
 
 void rgb_matrix_set_color_all(uint8_t red, uint8_t green, uint8_t blue) {
@@ -197,10 +213,10 @@ void rgb_matrix_handle_key_event(uint8_t row, uint8_t col, bool pressed) {
     }
 
     if (last_hit_buffer.count + led_count > LED_HITS_TO_REMEMBER) {
-        memcpy(&last_hit_buffer.x[0], &last_hit_buffer.x[led_count], LED_HITS_TO_REMEMBER - led_count);
-        memcpy(&last_hit_buffer.y[0], &last_hit_buffer.y[led_count], LED_HITS_TO_REMEMBER - led_count);
-        memcpy(&last_hit_buffer.tick[0], &last_hit_buffer.tick[led_count], (LED_HITS_TO_REMEMBER - led_count) * 2); // 16 bit
-        memcpy(&last_hit_buffer.index[0], &last_hit_buffer.index[led_count], LED_HITS_TO_REMEMBER - led_count);
+        memmove(&last_hit_buffer.x[0], &last_hit_buffer.x[led_count], LED_HITS_TO_REMEMBER - led_count);
+        memmove(&last_hit_buffer.y[0], &last_hit_buffer.y[led_count], LED_HITS_TO_REMEMBER - led_count);
+        memmove(&last_hit_buffer.tick[0], &last_hit_buffer.tick[led_count], (LED_HITS_TO_REMEMBER - led_count) * 2); // 16 bit
+        memmove(&last_hit_buffer.index[0], &last_hit_buffer.index[led_count], LED_HITS_TO_REMEMBER - led_count);
         last_hit_buffer.count = LED_HITS_TO_REMEMBER - led_count;
     }
 
