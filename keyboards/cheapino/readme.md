@@ -1,12 +1,10 @@
 # cheapino
 
-![cheapino](imgur.com image replace me!)
-
-*A short description of the keyboard/project*
+*Cheapino is a budget-friendly, QMK-powered split keyboard designed as an accessible entry point for building and programming your own mechanical keyboard.*
 
 * Keyboard Maintainer: [Thomas Haukland](https://github.com/tompi)
-* Hardware Supported: *The PCBs, controllers supported*
-* Hardware Availability: *Links to where you can find this hardware*
+* Hardware Supported: Cheapino PCB with RP2040-based controller
+* Hardware Availability: Design files available at [tompi/cheapino](https://github.com/tompi/cheapino)
 
 Make example for this keyboard (after setting up your build environment):
 
