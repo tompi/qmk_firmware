@@ -3,20 +3,12 @@
     "keyboard_name": "cheapino",
     "maintainer": "tompi",
     "bootloader": "rp2040",
-    "caps_word": {
-        "both_shifts_turns_on": true
-    },
     "diode_direction": "ROW2COL",
     "encoder": {
-        "_comment0": "These are unused but have to be defined. The encoder is",
-        "_comment1": "actually handled by matrix intersections; see encoder.c",
-        "rotary": [
-            {"pin_a": "GP9", "pin_b": "GP10"}
-        ]
+        "driver": "custom"
     },
     "features": {
         "bootmagic": true,
-        "caps_word": true,
         "deferred_exec": true,
         "encoder": true,
         "extrakey": true,
@@ -38,9 +30,6 @@
             "val": 64
         },
         "led_count": 1
-    },
-    "tapping": {
-        "term": 230
     },
     "url": "https://github.com/tompi/cheapino",
     "usb": {

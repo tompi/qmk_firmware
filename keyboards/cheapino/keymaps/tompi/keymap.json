@@ -1,8 +1,15 @@
 {
     "author": "thomas.haukland@gmail.com",
     "config": {
+        "caps_word": {
+            "both_shifts_turns_on": true
+        },
         "features": {
+            "caps_word": true,
             "encoder_map": true
+        },
+        "tapping": {
+            "term": 230
         }
     },
     "encoders": [
