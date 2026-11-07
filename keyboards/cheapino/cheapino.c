@@ -1,8 +1,13 @@
+// Copyright 2023 Thomas Haukland (@tompi)
+// SPDX-License-Identifier: GPL-2.0-or-later
+
 #include "matrix.h"
 #include "quantum.h"
 #include "print.h"
 
 #include QMK_KEYBOARD_H
+
+extern bool encoder_queue_event(uint8_t index, bool clockwise);
 
 // This is to keep state between callbacks, when it is 0 the
 // initial RGB flash is finished
@@ -64,22 +69,6 @@ void keyboard_post_init_kb(void) {
             ((b & (1 << 14)) >> 13) | \
             b >> 15
 
-/* This is for debugging the matrix rows
-void printBits(uint16_t n)
-{
-    long i;
-    for (i = 15; i >= 0; i--) {
-        if ((n & (1 << i)) != 0) {
-            printf("1");
-        }
-        else {
-            printf("0");
-        }
-    }
-    printf("\n");
-}
-*/
-
 bool bit_pattern_set(uint16_t number, uint16_t bitPattern) {
     return !(~number & bitPattern);
 }
@@ -103,22 +92,28 @@ void fix_ghosting_column(
         uint16_t possible_error_cause,
         uint16_t possible_error,
         uint16_t error_fix) {
-    // First the right side
-    for (short i = 0; i<3; i++) {
-        fix_ghosting_instance(matrix, i, possible_error_cause, (i+1)%3, possible_error, error_fix);
-        fix_ghosting_instance(matrix, i, possible_error_cause, (i+2)%3, possible_error, error_fix);
+    // First the right side.
+    // For each of the three rows (i = 0..2), check for ghosting interactions with
+    // the other two rows. (i+1)%3 and (i+2)%3 cycle through the two remaining
+    // row indices without going out of bounds, so every pair is considered.
+    for (short i = 0; i < 3; i++) {
+        fix_ghosting_instance(matrix, i, possible_error_cause, (i + 1) % 3, possible_error, error_fix);
+        fix_ghosting_instance(matrix, i, possible_error_cause, (i + 2) % 3, possible_error, error_fix);
     }
 
-    // Then exactly same procedure on the left side
-    for (short i = 0; i<3; i++) {
-        fix_ghosting_instance(matrix, i+4, possible_error_cause<<6, 4+((i+1)%3), possible_error<<6, error_fix<<6);
-        fix_ghosting_instance(matrix, i+4, possible_error_cause<<6, 4+((i+2)%3), possible_error<<6, error_fix<<6);
+    // Then exactly same procedure on the left side.
+    // Left-side rows start at index 4; bit patterns are shifted by 6 to match
+    // left-half column positions.
+    for (short i = 0; i < 3; i++) {
+        fix_ghosting_instance(matrix, i + 4, possible_error_cause << 6, 4 + ((i + 1) % 3), possible_error << 6, error_fix << 6);
+        fix_ghosting_instance(matrix, i + 4, possible_error_cause << 6, 4 + ((i + 2) % 3), possible_error << 6, error_fix << 6);
     }
 }
 
-// For QWERTY layout, key combo a+s+e also outputs q. This suppresses the q, and other similar ghosts
-// These are observed ghosts(following a pattern). TODO: need to fix this for v3
-// Might need to add 2 diodes(one in each direction) for every row, to increase voltage drop.
+// For QWERTY layout, key combo a+s+e also outputs q. This suppresses the q, and other similar ghosts.
+// These are observed ghosts (following a pattern). TODO: if a v3 PCB/hardware revision is created,
+// re-validate these patterns and update this table as needed. Might need to add 2 diodes
+// (one in each direction) for every row, to increase voltage drop.
 void fix_ghosting(matrix_row_t matrix[]) {
     fix_ghosting_column(matrix,
                         rev(0B0110000000000000),
@@ -190,7 +185,6 @@ void fix_encoder_action(matrix_row_t current_matrix[]) {
     bool         colA        = encoder_row & ENC_A_BIT;
     bool         colB        = encoder_row & ENC_B_BIT;
 
-    extern bool encoder_queue_event(uint8_t, bool);
     if (colA && colB) {
         colABPressed = true;
     } else if (colA) {
