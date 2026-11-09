@@ -7,6 +7,11 @@ A budget-friendly 36-key split keyboard with a rotary encoder, designed as an ac
 * Keyboard Maintainer: [Thomas Haukland](https://github.com/tompi)
 * Hardware Supported: Cheapino v1 and v2 PCBs with an RP2040-Zero controller
 * Hardware Availability: Open source, design files and build guide at [tompi/cheapino](https://github.com/tompi/cheapino)
+* Keymaps: `default` (stock) and `musclememory` (compiled-in [muscle memory
+  friendly home row mods](https://blog.getreu.net/20250826-muscle-memory-friendly-home-row-mods/)
+  layout) and `vial` (the same layout, Vial-reconfigurable), both v2-only --
+  see their own readmes (`keymaps/musclememory/readme.md`,
+  `keymaps/vial/readme.md`) for the full build/flash/EEPROM-reset procedure
 
 Make example for this keyboard (after setting up your build environment), using `v1` or `v2` to match your PCB:
 
