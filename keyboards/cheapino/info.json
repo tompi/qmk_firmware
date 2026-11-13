@@ -22,9 +22,9 @@
     "processor": "RP2040",
     "rgblight": {
         "default": {
-            "hue": 128,
-            "sat": 128,
-            "val": 64
+            "hue": 0,
+            "sat": 0,
+            "val": 5
         },
         "led_count": 1
     },
