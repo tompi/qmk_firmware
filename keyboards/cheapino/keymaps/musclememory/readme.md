@@ -40,7 +40,7 @@ In this firmware, `QK_CLEAR_EEPROM` is hard-mapped to the **W key on Layer 7** (
 2.  **Triggering the Clear EEPROM:**
     *   While on Layer 7, press the **W key**.
 3.  **Verification:**
-    The device will not reboot automatically — press the controller reboot button or disconnect power to apply the reset. The RGB underglow returning to **bright red** confirms the Clear EEPROM was successful.
+    The device will not reboot automatically — press the controller reboot button or disconnect power to apply the reset. The RGB underglow returning to a **moderate white** confirms the Clear EEPROM was successful.
 
 
 ## RGB Lighting & Layer Feedback
