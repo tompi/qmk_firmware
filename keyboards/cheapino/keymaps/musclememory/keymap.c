@@ -12,10 +12,34 @@ typedef struct {
 } custom_hsv_t;
 static custom_hsv_t old_color;
 
+// Snapshot of the _L7 indicator colour (pink) taken right after it's
+// applied.  matrix_scan_user() only promotes the live colour into
+// old_color once it has moved away from this snapshot, i.e. once the user
+// has actually touched the underglow hue/sat/val keys -- otherwise leaving
+// _L7 without ever adjusting anything would restore pink instead of the
+// real base colour.
+static custom_hsv_t l7_entry_color;
+
 /**
  * LAYER DEFINITIONS
  */
 enum layers { _BASE = 0, _L1, _L2, _L3, _L4, _L5, _L6, _L7 };
+
+/**
+ * _L4's SYSTEM-LAYER GATE (middle thumb keys)
+ *
+ * Both are plain MO(_L7) -- immediate press/release, no tap-hold/tap-dance
+ * ambiguity at all. LT()/tap-dance versions of this were tried first and
+ * were unreliable specifically because [FN] (OSL(_L4)) is a genuine
+ * one-shot: tapping it and releasing before pressing the gate key clears
+ * the one-shot's bookkeeping synchronously on that press, before a
+ * deferred tap-hold/tap-dance resolution ever gets a chance to run --
+ * confirmed by instrumented hardware tracing. A plain MO() has no such
+ * deferral (dispatches synchronously on both press and release), so it
+ * sidesteps the race entirely -- the same reason [/] already worked
+ * reliably as a combo-free path before this.  Trade-off: tapping either
+ * key (instead of holding) does nothing, same as [/] always did.
+ */
 
 /**
  * COLOR DEFINITIONS
@@ -26,7 +50,10 @@ enum layers { _BASE = 0, _L1, _L2, _L3, _L4, _L5, _L6, _L7 };
 #define COLOR_LAVENDER  210, 130, 15
 #define COLOR_RED       0, 255, 12
 #define COLOR_PINK      230, 170, 10
-#define COLOR_WHITE     0, 0, 10
+// Slight warm bias (not pure hue=0/sat=0) to counteract the cool/blue cast
+// cheap WS2812 LEDs show at very low brightness -- confirmed on real v2
+// hardware 2026-11-12.
+#define COLOR_WHITE     0, 0, 5
 
 /**
  * Initialize RGB color capture
@@ -42,6 +69,16 @@ void keyboard_post_init_user(void) {
     old_color.h = rgblight_get_hue();
     old_color.s = rgblight_get_sat();
     old_color.v = rgblight_get_val();
+}
+
+/**
+ * EEPROM INITIALIZATION
+ * Runs once, only when the EEPROM is reset (first flash or QK_CLEAR_EEPROM).
+ * Seeds a moderate white instead of QMK's built-in bright red default.
+ */
+void eeconfig_init_user(void) {
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+    rgblight_sethsv(COLOR_WHITE);
 }
 
 /**
@@ -67,6 +104,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             break;
         case _L7:
             rgblight_sethsv_noeeprom(COLOR_PINK);
+            // Remember exactly what was just applied, so matrix_scan_user()
+            // can tell "still showing the indicator" apart from "the user
+            // adjusted it".
+            l7_entry_color.h = rgblight_get_hue();
+            l7_entry_color.s = rgblight_get_sat();
+            l7_entry_color.v = rgblight_get_val();
             break;
         default:
             // Restore original color on base layer
@@ -304,8 +347,10 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 /**
- * Keep old_color mirroring the live colour while on _L7, so that leaving the
- * layer restores exactly what it was showing.
+ * Keep old_color mirroring the live colour while on _L7, but only once the
+ * user has actually changed it -- comparing against l7_entry_color (the
+ * pink indicator snapshot) is what keeps leaving _L7 untouched from
+ * clobbering old_color with pink itself.
  *
  * This can't be done in post_process_record_user() for the underglow hue/
  * saturation/value keys: process_underglow() returns false after applying each of those
@@ -317,9 +362,14 @@ void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
  */
 void matrix_scan_user(void) {
     if (get_highest_layer(layer_state) == _L7) {
-        old_color.h = rgblight_get_hue();
-        old_color.s = rgblight_get_sat();
-        old_color.v = rgblight_get_val();
+        uint8_t h = rgblight_get_hue();
+        uint8_t s = rgblight_get_sat();
+        uint8_t v = rgblight_get_val();
+        if (h != l7_entry_color.h || s != l7_entry_color.s || v != l7_entry_color.v) {
+            old_color.h = h;
+            old_color.s = s;
+            old_color.v = v;
+        }
     }
 }
 
@@ -362,8 +412,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_L4] = LAYOUT(
     KC_F1,          KC_F2,          KC_F3,   KC_F4,           KC_F5,   QK_REBOOT, KC_F6,          KC_F7,          KC_F8,   KC_F9,          KC_F10,
     LSFT_T(KC_F11), RALT_T(KC_F12), KC_F13,  LCTL_T(KC_F14),  LALT_T(KC_F15),     LALT_T(KC_F16), RCTL_T(KC_F17), KC_F18,  RALT_T(KC_F19), RSFT_T(KC_F20),
-    KC_F21,         KC_F22,         KC_F23,  RGUI_T(KC_F24),  KC_NO,              KC_NO,          RGUI_T(KC_NO),  KC_NO,   KC_NO,          MO(_L7),
-    KC_TRNS, LT(_L6, KC_NO), KC_TRNS,           KC_TRNS, KC_TRNS, KC_TRNS
+    KC_F21,         KC_F22,         KC_F23,  RGUI_T(KC_F24),  KC_NO,              KC_NO,          RGUI_T(KC_NO),  KC_NO,   KC_NO,          KC_NO,
+    KC_TRNS, MO(_L7), KC_TRNS,           KC_TRNS, MO(_L7), KC_TRNS
 ),
 
 [_L5] = LAYOUT(
@@ -411,24 +461,22 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 /**
  * COMBOS
  * Combos allow triggering actions by pressing multiple keys simultaneously.
- * - combo1/2: Trigger Layer 7 (System settings).
- * - combo3: Go to Layer 3.
- * - combo4/5: Reboot into Bootloader (Flash mode).
- * - combo_caps: Toggle Caps Lock.
+ * - combo1 (M+Backspace): Go to Layer 3 (symbol layer); combo2 (V+Esc):
+ *   Toggle Caps Lock (both freed up from the old Layer-7 gate now that
+ *   _L4's middle thumb keys reach the system layer instead; moved off
+ *   Space/Enter onto Esc/Backspace so the chord no longer shares its
+ *   thumb key with every space/enter keystroke).
  * - combo_numpad: Go to Layer 2 (numpad).
+ *
+ * (The old middle-thumb-keys combo and outer-thumb-keys combo were
+ * removed -- redundant with combo1/2 and with _L4's system-layer gate.)
  */
-const uint16_t PROGMEM combo1[] = { RGUI_T(KC_M), MT(MOD_LGUI, KC_ENT), COMBO_END };
-const uint16_t PROGMEM combo2[] = { RGUI_T(KC_V), MT(MOD_LGUI, KC_SPC), COMBO_END };
-const uint16_t PROGMEM combo3[] = { LT(_L6, KC_ESC), LT(_L5, KC_BSPC), COMBO_END };
-const uint16_t PROGMEM combo4[] = { LT(_L6, KC_NO), LT(_L5, KC_BSPC), COMBO_END };
-const uint16_t PROGMEM combo_caps[] = { OSL(_L4), TD(TD_CMENU), COMBO_END };
+const uint16_t PROGMEM combo1[] = { RGUI_T(KC_M), LT(_L5, KC_BSPC), COMBO_END };
+const uint16_t PROGMEM combo2[] = { RGUI_T(KC_V), LT(_L6, KC_ESC), COMBO_END };
 const uint16_t PROGMEM combo_numpad[] = { KC_COMM, KC_DOT, COMBO_END };
 
 combo_t key_combos[] = {
-    COMBO(combo1, MO(_L7)),
-    COMBO(combo2, MO(_L7)),
-    COMBO(combo3, TO(_L3)),
-    COMBO(combo4, TO(_L3)),
-    COMBO(combo_caps, KC_CAPS),
+    COMBO(combo1, TO(_L3)),
+    COMBO(combo2, KC_CAPS),
     COMBO(combo_numpad, TO(_L2))
 };
