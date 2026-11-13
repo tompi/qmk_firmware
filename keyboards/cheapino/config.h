@@ -22,10 +22,10 @@
 // get_tapping_term() in the keymap uses this value as its default branch.
 #define TAPPING_TERM 200
 
-// Decided 2026-10-09: disabled. Plain 200ms for every key -- same as the
-// vial keymap already had unconditionally -- works well enough; the
-// opposite-hand-only guarantee below wasn't worth its mouse+modifier cost.
-// Re-enable by uncommenting the next line if that changes again.
+// Decided 2026-10-09: disabled. Plain 200ms for every key works well
+// enough; the opposite-hand-only guarantee below wasn't worth its
+// mouse+modifier cost. Re-enable by uncommenting the next line if that
+// changes again.
 // #define HOME_ROW_MOD_OPPOSITE_HAND_ONLY
 
 // A tap-hold key on a chordal_hold_layout 'L'/'R' position only resolves to
@@ -47,14 +47,6 @@
 //     hold-then-mouse gesture still commit via the plain timeout.
 // Used by musclememory/keymap.c's get_tapping_term(). Kept at keyboard level
 // rather than duplicated, for whenever a second keymap can use it too.
-//
-// NOT applied to the vial keymap: quantum/vial.c defines its own strong,
-// unconditional get_tapping_term() whenever VIAL_ENABLE=yes (it backs
-// Vial-GUI-configurable per-tap-dance timing), which collides with any
-// keymap-level definition at link time. Unlike the QMK_SETTINGS/
-// get_chordal_hold() collision this isn't gated by a build flag, so it can't
-// be sidestepped without patching vial-qmk itself. Until that's worth doing,
-// the vial keymap keeps the plain flat TAPPING_TERM for these keys.
 #define HOME_ROW_MOD_TERM 500
 
 // Force these values regardless of what the JSON or other files say

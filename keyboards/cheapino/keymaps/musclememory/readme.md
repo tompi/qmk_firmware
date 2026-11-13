@@ -4,8 +4,6 @@ This firmware implements the [Muscle memory friendly home row mods layout](https
 
 ## Compiling and Flashing
 
-### Using the QMK/QMK repository
-
 1.  **Clone and Setup:**
     ```bash
     git clone https://github.com/qmk/qmk_firmware.git
@@ -30,32 +28,10 @@ This firmware implements the [Muscle memory friendly home row mods layout](https
     * Drag and drop the `.uf2` file onto the `RPI-RP2` drive.
 
 
-### Using the Vial/QMK repository
-
-Alternatively, you can use the Vial/QMK repository to compile and flash.
-
-1.  **Clone and Setup:**
-    ```bash
-    git clone https://github.com/vial-kb/vial-qmk
-    cd vial-qmk
-    git submodule update --init --recursive
-    ```
-
-2.  **Copy Keyboard Folder:**
-    ```bash
-    cp -r ../../keyboards/cheapino vial-qmk/keyboards/
-    ```
-
-3.  **Compile:**
-    ```bash
-    make cheapino/v2:musclememory
-    ```
-
-
 ## Clearing EEPROM
 
-Clearing the EEPROM resets all persistent settings (RGB configurations, Vial support
-(if compiled in, i.e. keymaps, tap dances, and combos) to the firmware defaults.
+Clearing the EEPROM resets all persistent settings (RGB configuration) to the
+firmware defaults.
 
 In this firmware, `QK_CLEAR_EEPROM` is hard-mapped to the **W key on Layer 7** (left ring, top row) to allow a reset without the GUI.
 
