@@ -36,9 +36,8 @@ enum layers { _BASE = 0, _L1, _L2, _L3, _L4, _L5, _L6, _L7 };
  * deferred tap-hold/tap-dance resolution ever gets a chance to run --
  * confirmed by instrumented hardware tracing. A plain MO() has no such
  * deferral (dispatches synchronously on both press and release), so it
- * sidesteps the race entirely -- the same reason [/] already worked
- * reliably as a combo-free path before this.  Trade-off: tapping either
- * key (instead of holding) does nothing, same as [/] always did.
+ * sidesteps the race entirely. Trade-off: tapping either key (instead of
+ * holding) does nothing.
  */
 
 /**
